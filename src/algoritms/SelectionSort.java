@@ -14,7 +14,11 @@ public class SelectionSort implements SortInterface {
   public SelectionSort(boolean sortForInt) {
     this.column = 0;
     this.metrics = null;
+<<<<<<< HEAD
     this.sortForInt = false;
+=======
+    this.sortForInt = sortForInt;
+>>>>>>> a8926c86165acbcb9a41b8b1489536fdf3e91a4f
     this.pathToSaveMetrics = null;
     this.pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
   }

@@ -127,7 +127,11 @@ public class MergeSort implements SortInterface {
 
   public void run(String matrix[][], int l, int r){
     if (l < r) {
+<<<<<<< HEAD
       int m =l + (r-l)/2;
+=======
+      int m =l+ (r-l)/2;
+>>>>>>> a8926c86165acbcb9a41b8b1489536fdf3e91a4f
 
       this.metrics.start();
       this.metrics.writeMetrics();

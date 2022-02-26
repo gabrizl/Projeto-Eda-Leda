@@ -10,7 +10,11 @@ public class QuickSort implements SortInterface {
   private final Collator instance;
 
   public QuickSort(boolean sortForInt) {
+<<<<<<< HEAD
     this.indexColumn = 1;
+=======
+    this.indexColumn = 0;
+>>>>>>> a8926c86165acbcb9a41b8b1489536fdf3e91a4f
     this.metrics = null;
     this.sortForInt = sortForInt;
     this.instance = Collator.getInstance();
