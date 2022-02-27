@@ -3,7 +3,12 @@
 ### <b>Bem vindo</b> ao ordenador de dados sobre o AirBNB de Berlin
 
 <br>
-
+## Grupo:
+<ul>
+  <li> Gabriel Alves</li>
+  <li> José Axaiel</li>
+  <li> Natalia Maite</li>
+  
 ## 🚀 Tecnologias
 
 ### Esse projeto foi desenvolvido com a seguinte tecnologia:
