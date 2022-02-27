@@ -4,7 +4,7 @@ import java.text.Normalizer;
 import java.util.regex.Pattern;
 
 public class MergeSort implements SortInterface {
-  
+
   private int indexColumn;
   private Metrics metrics;
   private boolean sortForInt;
@@ -19,7 +19,7 @@ public class MergeSort implements SortInterface {
 
   @Override
   public String[][] sort(String[][] matrix, int colomunIndex, String pathToSaveMetrics) {
-    
+
     this.metrics = new Metrics(pathToSaveMetrics);
     this.metrics.start();
     this.metrics.writeMetrics();
@@ -29,7 +29,7 @@ public class MergeSort implements SortInterface {
 
     this.metrics.start();
     this.metrics.writeMetrics();
-    
+
     return matrix;
   }
 
@@ -52,12 +52,10 @@ public class MergeSort implements SortInterface {
 
     int k = l;
     while (i < n1 && j < n2) {
-      if (Integer.parseInt(L[i][this.indexColumn]) 
-        <= Integer.parseInt(R[j][this.indexColumn])) {
+      if (Integer.parseInt(L[i][this.indexColumn]) <= Integer.parseInt(R[j][this.indexColumn])) {
         matrix[k] = L[i];
         i++;
-      }
-      else {
+      } else {
         matrix[k] = R[j];
         j++;
       }
@@ -76,7 +74,7 @@ public class MergeSort implements SortInterface {
       k++;
     }
   }
-  
+
   public void mergeForString(String matrix[][], int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
@@ -125,9 +123,9 @@ public class MergeSort implements SortInterface {
     return this.pattern.matcher(nfdNormalizedString).replaceAll("");
   }
 
-  public void run(String matrix[][], int l, int r){
+  public void run(String matrix[][], int l, int r) {
     if (l < r) {
-      int m =l+ (r-l)/2;
+      int m = l + (r - l) / 2;
 
       this.metrics.start();
       this.metrics.writeMetrics();

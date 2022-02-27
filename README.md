@@ -58,3 +58,4 @@ Relatório de Métricas: <a href="link">Acessa Relatório</a>.
   <li>Dar os comandos para executar "javac Main.java" e posteriormente "java Main"</li>
   <li>A execução se inicia e apartir dai o usuário seleciona o que desejar</li>
 </ol>
+

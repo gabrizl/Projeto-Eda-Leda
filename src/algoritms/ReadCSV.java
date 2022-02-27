@@ -3,10 +3,10 @@ package algoritms;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.text.ParseException;
 
 public class ReadCSV {
 
@@ -16,8 +16,8 @@ public class ReadCSV {
   private String columnToOrder;
   private String pathToSaveMetrics;
 
-  public ReadCSV(String filePath, String pathToSave, 
-                 String pathToSaveMetrics, String columnToOrder, String sep) {
+  public ReadCSV(String filePath, String pathToSave,
+      String pathToSaveMetrics, String columnToOrder, String sep) {
     this.filePath = filePath;
     this.pathToSave = pathToSave;
     this.columnToOrder = columnToOrder;
@@ -25,21 +25,21 @@ public class ReadCSV {
     this.sep = sep.length() == 0 ? "," : sep;
   }
 
-  public void readCsv(SortInterface algoritm) {
+  public void readCsv(SortInterface algoritm) throws ParseException {
 
     String arquivoCSV = this.filePath;
     BufferedReader br = null;
     String linha = "";
 
-    int lineSize = lineSize()-1;
-    int columnSize = columnsSize()-1;
-    String [][] matrix = new String[lineSize][columnSize];
+    int lineSize = lineSize() - 1;
+    int columnSize = columnsSize() - 1;
+    String[][] matrix = new String[lineSize][columnSize];
     int i = 0;
 
     try {
 
       br = new BufferedReader(new FileReader(arquivoCSV));
-      String [] header = br.readLine().split(this.sep);
+      String[] header = br.readLine().split(this.sep);
       while ((linha = br.readLine()) != null) {
 
         matrix[i++] = linha.split(this.sep);
@@ -48,7 +48,9 @@ public class ReadCSV {
 
       int col = indexOfColumn(header);
 
-      String [][] newMatrix = algoritm.sort(matrix, col+1, this.pathToSaveMetrics);
+      // matrix = DateFormat.mudarData(matrix);
+
+      String[][] newMatrix = algoritm.sort(matrix, col, this.pathToSaveMetrics);
 
       saveInCsv(newMatrix, header);
 
@@ -67,16 +69,58 @@ public class ReadCSV {
     }
   }
 
-  private void saveInCsv(String [][] matrix, String [] header) {
+  public void readCsvAndTransform(TransformInterface algoritm) throws ParseException {
+
+    String arquivoCSV = this.filePath;
+    BufferedReader br = null;
+    String linha = "";
+
+    int lineSize = lineSize() - 1;
+    int columnSize = columnsSize() - 1;
+    String[][] matrix = new String[lineSize][columnSize];
+    int i = 0;
+
     try {
-      
+
+      br = new BufferedReader(new FileReader(arquivoCSV));
+      String[] header = br.readLine().split(this.sep);
+      while ((linha = br.readLine()) != null) {
+
+        matrix[i++] = linha.split(this.sep);
+
+      }
+
+      int col = indexOfColumn(header);
+
+      String[][] newMatrix = algoritm.transform(matrix, col, this.pathToSaveMetrics);
+
+      saveInCsv(newMatrix, header);
+
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      if (br != null) {
+        try {
+          br.close();
+        } catch (IOException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+  }
+
+  private void saveInCsv(String[][] matrix, String[] header) {
+    try {
+
       FileWriter arq = new FileWriter(this.pathToSave);
       PrintWriter gravarArq = new PrintWriter(arq);
-      String head = String.join(",", header);
-      
+      String head = String.join(";", header);
+
       gravarArq.println(head);
       for (int i = 0; i < matrix.length; i++) {
-        String line = String.join(",", matrix[i]);
+        String line = String.join(";", matrix[i]);
         gravarArq.println(line);
       }
 
@@ -87,7 +131,7 @@ public class ReadCSV {
 
   }
 
-  private int indexOfColumn(String [] header) {
+  private int indexOfColumn(String[] header) {
     for (int i = 0; i < header.length; i++) {
       if (header[i].equalsIgnoreCase(this.columnToOrder)) {
         return i;
@@ -126,7 +170,7 @@ public class ReadCSV {
     return lines;
   }
 
-  private int columnsSize () {
+  private int columnsSize() {
     String arquivoCSV = filePath;
     BufferedReader br = null;
 
@@ -135,8 +179,8 @@ public class ReadCSV {
     try {
 
       br = new BufferedReader(new FileReader(arquivoCSV));
-      String [] lineColumn = br.readLine().split(this.sep);
-      
+      String[] lineColumn = br.readLine().split(this.sep);
+
       for (int i = 0; i < lineColumn.length; i++) {
         columns++;
       }
