@@ -3,7 +3,7 @@
 ### <b>Bem vindo</b> ao ordenador de dados sobre o AirBNB de Berlin
 
 <br>
-## Grupo:
+Grupo:
 <ul>
   <li> Gabriel Alves</li>
   <li> José Axaiel</li>
