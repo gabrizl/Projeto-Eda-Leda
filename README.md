@@ -1,9 +1,14 @@
 # AirBNB Berlin
 
-### <b>Bem vindo</b> ao ordenador de dados sobre o avanço do COVID-19 no Brasil
+### <b>Bem vindo</b> ao ordenador de dados sobre o AirBNB de Berlin
 
 <br>
-
+## Grupo:
+<ul>
+  <li> Gabriel Alves</li>
+  <li> José Axaiel</li>
+  <li> Natalia Maite</li>
+  
 ## 🚀 Tecnologias
 
 ### Esse projeto foi desenvolvido com a seguinte tecnologia:
@@ -49,7 +54,8 @@ Relatório de Métricas: <a href="link">Acessa Relatório</a>.
 <ol>
   <li>Fazer o download do zip e descompactar</li>
   <li>Adicionar o arquivo que deseja ordenar no diretório: /src/csvs/base</li>
-  <li>Colocar o nome do arquivo no arquivo Main.java onde tem "nomeDoArquivo.csv"</li>
+  <li>Colocar o arquivo com o nome "listings.csv"</li>
   <li>Dar os comandos para executar "javac Main.java" e posteriormente "java Main"</li>
   <li>A execução se inicia e apartir dai o usuário seleciona o que desejar</li>
 </ol>
+
